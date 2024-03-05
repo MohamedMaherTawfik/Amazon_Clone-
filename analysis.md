@@ -3,22 +3,24 @@ Product:
     -price
     -image
     -images
-    -flag == information
+    -flag == 
+    
     -review:
         -image
         -name
         -date
         -rate
         -review
+
     -sku
     -brand:
         -name
         -img
         -products_count 
+
     -reviews count
     -subtitle
     -tags
     -description
     -related_items
     -quantity
-    -
