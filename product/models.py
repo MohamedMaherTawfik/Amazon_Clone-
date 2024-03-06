@@ -26,7 +26,7 @@ class Product(models.Model):
     
     
 class ProductImages(models.Model):
-    product=models.ForeignKey(Product,verbose_name=_('Product'),related_name='product_image',on_delete=models.CASCADE)
+    product=models.ForeignKey(Product,verbose_name=_('Product'), related_name='product_image', on_delete=models.CASCADE)
     image=models.ImageField(_('Image'),upload_to='product_images')
 
     def __str__(self):
@@ -38,16 +38,16 @@ class Brand(models.Model):
     image=models.ImageField(_('Image'),upload_to='brand')
     
     def __str__(self):
-        return self.name
+        return str(self.name)
     
     
 class Review(models.Model):
-    user=models.ForeignKey(User,verbose_name=_('User'),on_delete=models.SET_NULL,related_name='review_author')
-    product=models.ForeignKey(Product,_('Product'),related_name='product_review',on_delete=models.CASCADE)
+    user=models.ForeignKey(User,verbose_name=_('User'),on_delete=models.SET_NULL,related_name='review_author',null=True,blank=True)
+    product=models.ForeignKey(Product,verbose_name=_('Product'),related_name='product_review',on_delete=models.CASCADE)
     rate=models.IntegerField(_('Rate'))
     review=models.CharField(_('Review'),max_length=250)
     created_at=models.DateTimeField(_('Created_at'),default=timezone.now)
     
     def __str__(self):
-        return str(self.user,self.product)
+        return str(self.user)
 
