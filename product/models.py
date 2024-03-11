@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from taggit.managers import TaggableManager
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
@@ -20,7 +21,8 @@ class Product(models.Model):
     description=models.TextField(_('Description'),max_length=40000)
     quantity=models.IntegerField(_('Quantity'),)
     brand=models.ForeignKey('Brand',verbose_name=_('Brand'),related_name='Product_brand',on_delete=models.SET_NULL,null=True,blank=True)
-    
+    tags = TaggableManager()  
+     
     def __str__(self):
         return self.name
     
