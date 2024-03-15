@@ -2,9 +2,8 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'en/css/brand-list.css' %}">
+<link rel="stylesheet" href="{% static 'en/css/brand-list.css' %}">
 {% endblock css %}
-
 
 {% block body %}
         <!--=====================================
@@ -55,24 +54,25 @@
                     </div>
                 </div>
                 <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 isotope-items">
-
-                    {% for brand in brand %}
-                        <div class="col all vegetables">
-                            <div class="brand-wrap">
-                                <div class="brand-media">
-                                    <img src="{{brand.image.url}}" alt="brand">
-                                    <div class="brand-overlay">
-                                        <a href="brand-single.html"><i class="fas fa-link"></i></a>
-                                    </div>
-                                </div>
-                                <div class="brand-meta">
-                                    <h4>{{brand.name}}</h4>
-                                    <p></p>
+                    
+                    {% for brand in brand_list %}
+                    <div class="col all vegetables">
+                        <div class="brand-wrap">
+                            <div class="brand-media">
+                                <img src="{{brand.image.url}}" alt="brand">
+                                <div class="brand-overlay">
+                                    <a href="brand-single.html"><i class="fas fa-link"></i></a>
                                 </div>
                             </div>
+                            <div class="brand-meta">
+                                <h4>{{brand}}</h4>
+                                <p>(45 items)</p>
+                            </div>
                         </div>
+                    </div>
                     {% endfor %}
-
+                        
+                 
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
@@ -103,30 +103,4 @@
         <!--=====================================
                     BRAND LIST PART END
         =======================================-->
-
-
-        <!--=====================================
-                    NEWSLETTER PART START
-        =======================================-->
-        <section class="news-part" style="background: url(images/newsletter.jpg) no-repeat center;">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-5 col-lg-6 col-xl-7">
-                        <div class="news-text">
-                            <h2>Get 20% Discount for Subscriber</h2>
-                            <p>Lorem ipsum dolor consectetur adipisicing accusantium</p>
-                        </div>
-                    </div>
-                    <div class="col-md-7 col-lg-6 col-xl-5">
-                        <form class="news-form">
-                            <input type="text" placeholder="Enter Your Email Address">
-                            <button><span><i class="icofont-ui-email"></i>Subscribe</span></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--=====================================
-                    NEWSLETTER PART END
-        =======================================-->
-        {% endblock body %}
+{% endblock %}
