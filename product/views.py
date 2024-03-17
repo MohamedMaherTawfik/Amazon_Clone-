@@ -4,6 +4,12 @@ from django.views.generic import ListView,DetailView
 from .models import Product,ProductImages,Review,Brand
 
 # Create your views here.
+
+def quesryset_debug(request):
+    data=Product.objects.all
+    return render(request,'product/debug.html', {"data":data})
+
+
 class ProductList(ListView):
     model=Product
     
