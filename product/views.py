@@ -108,7 +108,7 @@ class BrandDetail(ListView):
     paginate_by=20
     
     def get_queryset(self): #override on queryset
-        brand=Brand.objects.get(slug=self.kwargs['slug'])
+        brand=Brand.objects.filter(slug=self.kwargs['slug']).annotate(product_count=Count('Product_brand'))[0]
         return super().get_queryset().filter(brand=brand)
     
     #retreive new data on --> template 
