@@ -9,7 +9,7 @@ from  django.db.models.aggregates import Min,Max,Count,Avg,Sum
 
 def quesryset_debug(request):
     #filter
-    # data=Product.objects.select_related('brand').all
+    data=Product.objects.select_related('brand').all
     # data=Product.objects.filter(price__gt=20) #Greater than 
     # data=Product.objects.filter(price__gte=20)#Greater than or equal
     # data=Product.objects.filter(price__lt=20)#less than 
@@ -77,18 +77,14 @@ def quesryset_debug(request):
     # data=Product.objects.aggregate(Avg('price'))
     
     #annotate
-    data=Product.objects.annotate(price_with_taxis=F('price')*1.2)
-    
-    
-    
-    
-    
+    # data=Product.objects.annotate(price_with_taxis=F('price')*1.2)
     
     return render(request,'product/debug.html', {"data":data})
 
 
 class ProductList(ListView):
     model=Product
+    
     
 class ProductDetail(DetailView):
     model=Product
@@ -104,6 +100,7 @@ class ProductDetail(DetailView):
 
 class BrandList(ListView):
     model=Brand
+    queryset=Brand.objects.annotate(product_count=Count('Product_brand')) # get by related name in models 
     
 class BrandDetail(ListView):
     model=Product
