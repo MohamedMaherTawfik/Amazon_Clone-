@@ -13,7 +13,12 @@ class ProductAdmin(admin.ModelAdmin):
     inlines=[ProductImagesTabular]
 
 
+class ReviewProduct(admin.ModelAdmin):
+    list_display=['product','rate','created_at']
+    list_filter=['product','rate']
+    search_fields=['rate','user']
+    
 admin.site.register(Product,ProductAdmin)
 admin.site.register(ProductImages)
-admin.site.register(Review)
+admin.site.register(Review,ReviewProduct)
 admin.site.register(Brand)
