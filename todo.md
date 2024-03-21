@@ -1,0 +1,14 @@
+-Api
+-postman
+-users
+-orders
+-cart
+-coupons
+-Docker
+-Celery
+-translation
+-Caching
+-redis
+-deploy
+-Ajax
+
