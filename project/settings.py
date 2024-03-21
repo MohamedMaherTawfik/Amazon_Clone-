@@ -38,10 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    #Django Tools:
     "debug_toolbar",
     'taggit',
     
+    #My APPS:
     'product',
+    'settings',
 ]
 
 MIDDLEWARE = [
