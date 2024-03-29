@@ -1,23 +1,23 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import ProductSerializers
-from .models import Product
+from .serializers import ProductSerializers,BrandSerializers
+from .models import Product,Brand
 from rest_framework import generics
 
 
 
-@api_view(['GET'])
-def Product_list_api(request):
-    Products=Product.objects.all()[:20] #return as a list
-    data=ProductSerializers(Products,many=True,context={'request':request}).data  #return as a Json 
-    return Response({'products':data})
+# @api_view(['GET'])
+# def Product_list_api(request):
+#     Products=Product.objects.all()[:20] #return as a list
+#     data=ProductSerializers(Products,many=True,context={'request':request}).data  #return as a Json 
+#     return Response({'products':data})
     
 
-@api_view(['GET'])
-def Product_Detail_api(request,product_id):
-    Products=Product.objects.get(id=product_id) #return as a list
-    data=ProductSerializers(Products,context={'request':request}).data  #return as a Json 
-    return Response({'products':data})
+# @api_view(['GET'])
+# def Product_Detail_api(request,product_id):
+#     Products=Product.objects.get(id=product_id) #return as a list
+#     data=ProductSerializers(Products,context={'request':request}).data  #return as a Json 
+#     return Response({'products':data})
     
 
 class ProductListApi(generics.ListCreateAPIView):
@@ -28,3 +28,14 @@ class ProductListApi(generics.ListCreateAPIView):
 class ProductDetailApi(generics.RetrieveUpdateDestroyAPIView):
     queryset=Product.objects.all()
     serializer_class=ProductSerializers
+    
+    
+class BrandListApi(generics.ListCreateAPIView):
+    queryset=Brand.objects.all()
+    serializer_class=BrandSerializers
+    
+
+class BrandDetailApi(generics.RetrieveUpdateDestroyAPIView):
+    queryset=Brand.objects.all()
+    # data=Product.objects.filter(brand=queryset)
+    serializer_class=BrandSerializers
