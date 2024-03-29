@@ -2,6 +2,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import ProductSerializers
 from .models import Product
+from rest_framework import generics
 
 
 
@@ -18,4 +19,12 @@ def Product_Detail_api(request,product_id):
     data=ProductSerializers(Products,context={'request':request}).data  #return as a Json 
     return Response({'products':data})
     
+
+class ProductListApi(generics.ListCreateAPIView):
+    queryset=Product.objects.all()
+    serializer_class=ProductSerializers
     
+    
+class ProductDetailApi(generics.RetrieveUpdateDestroyAPIView):
+    queryset=Product.objects.all()
+    serializer_class=ProductSerializers
