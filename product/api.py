@@ -4,6 +4,7 @@ from rest_framework import filters
 from .models import Product,Brand
 from rest_framework import generics
 from .myfilter import ProductFilter
+from .mypagination import Mypagination
 
 
 
@@ -30,6 +31,7 @@ class ProductListApi(generics.ListCreateAPIView):
     search_fields = ['name', 'subtitle','description']
     ordering_fields = ['price', 'quantity']
     filterset_class=ProductFilter
+    pagination_class=Mypagination
 
     
     
